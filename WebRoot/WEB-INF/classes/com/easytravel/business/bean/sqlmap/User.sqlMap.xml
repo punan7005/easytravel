@@ -14,9 +14,7 @@
     <result property="userId" column="user_id"/>
     <result property="userName" column="user_name"/>
 	<result property="userPassword" column="user_password"/>
-	<!-- 
-	<result property="roles" column="id" select="com.teacherclub.business.security.entity.Role.selectByUserId"/>
-	 -->
+	
   </resultMap> 
   
   <select id="selectById" resultMap="userResult">

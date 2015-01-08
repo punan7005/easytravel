@@ -1,13 +1,18 @@
 package com.easytravel.tools;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.Random;
 
+import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class FileUpload {
 	public static String upLoadFile(String savePath,String fileName, byte[] bytes){
@@ -38,7 +43,7 @@ public class FileUpload {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return dateFileName + File.separator + fileName;
+		return savePath + dateFileName + File.separator + fileName;
 	}
 	
 	//获取时间戳方法
@@ -56,4 +61,15 @@ public class FileUpload {
 		}
 		return reqStr;
 	}
+	
+	//获取文件后缀
+	public static String getFileType(String fileInfo){
+		File file = new File(fileInfo);
+		System.out.println("Mime Type of " + file.getName() + " is " +  new MimetypesFileTypeMap().getContentType(file));
+		String fileType = new MimetypesFileTypeMap().getContentType(file);
+		return fileType;
+	}
+	
+	
+	
 }
